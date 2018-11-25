@@ -74,31 +74,28 @@ public class MainActivity extends AppCompatActivity {
                     String buyerName = modelUser.getFirstName()+" "+modelUser.getLastName();
                     modelOrder.setBuyerName(buyerName);
 
-                    databaseReference.child(modelOrder.getPhotoOwnerId()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                            ModelUser modelUser = dataSnapshot.getValue(ModelUser.class);
-                            String ownerName = modelUser.getFirstName()+" "+modelUser.getLastName();
-                            modelOrder.setOwnerName(ownerName);
+                   /* orderListAdapter.setValues(modelOrder);
+                    orderListAdapter.notifyDataSetChanged();*/
+                }
 
-                            orderListAdapter.setValues(modelOrder);
-                            orderListAdapter.notifyDataSetChanged();
-                        }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
 
-                        }
-                    });
+            databaseReference.child(modelOrder.getPhotoOwnerId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    orderListAdapter.notifyDataSetChanged();
+                    ModelUser modelUser = dataSnapshot.getValue(ModelUser.class);
+                    String ownerName = modelUser.getFirstName()+" "+modelUser.getLastName();
+                    modelOrder.setOwnerName(ownerName);
 
                     orderListAdapter.setValues(modelOrder);
                     orderListAdapter.notifyDataSetChanged();
                 }
-
-
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
