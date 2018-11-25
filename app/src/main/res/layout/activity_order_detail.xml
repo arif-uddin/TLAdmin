@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6"
+    tools:context=".Activity.OrderDetailActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:onClick="btn_back"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="10dp"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:background="@color/colorAccent"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+
+            <TextView
+                android:id="@+id/tv_order_status"
+                android:gravity="center"
+                android:text="Order Status"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="Ordered Photo"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_ordered_photo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_orderid"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Order ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_order_date"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Order Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_photo_owner_name"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Photo by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_buyer_name"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Ordered by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_product_type"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Product Type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_product_quantity"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_order_description"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Order Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
