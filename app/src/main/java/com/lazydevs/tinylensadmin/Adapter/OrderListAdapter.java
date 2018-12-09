@@ -58,7 +58,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 intent.putExtra("order_product_quantity",orders.get(i).getQuantity());
                 intent.putExtra("buyer_name",orders.get(i).getBuyerName());
                 intent.putExtra("owner_name",orders.get(i).getOwnerName());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 
             }

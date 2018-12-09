@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
         orderListAdapter = new OrderListAdapter(getApplicationContext(),orders);
         recyclerVieworderListView.setAdapter(orderListAdapter);
 
+//        Query query = FirebaseDatabase.getInstance().getReference().child("orders");
+//        query.orderByKey().addChildEventListener(new QueryForOrders());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        orders.clear();
         Query query = FirebaseDatabase.getInstance().getReference().child("orders");
         query.orderByKey().addChildEventListener(new QueryForOrders());
     }
@@ -62,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             final ModelOrder modelOrder = dataSnapshot.getValue(ModelOrder.class);
 
             final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
@@ -75,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     modelOrder.setBuyerName(buyerName);
 
 
-                   /* orderListAdapter.setValues(modelOrder);
-                    orderListAdapter.notifyDataSetChanged();*/
                 }
 
                 @Override
@@ -126,4 +131,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
 }
