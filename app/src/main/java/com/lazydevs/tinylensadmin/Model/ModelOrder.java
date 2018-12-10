@@ -14,6 +14,7 @@ public class ModelOrder {
     String PhotoOwnerId;
     String BuyerId;
     String Quantity;
+    String TransactionId;
 
     @Exclude
     String buyerName, ownerName;
@@ -41,7 +42,7 @@ public class ModelOrder {
     public ModelOrder() {
     }
 
-    public ModelOrder(String contactNo, String orderedImageUrl, String orderProductType, String orderId, String orderDescription, String orderDate, String orderStatus, String photoOwnerId, String buyerId, String quantity) {
+    public ModelOrder(String contactNo, String orderedImageUrl, String orderProductType, String orderId, String orderDescription, String orderDate, String orderStatus, String photoOwnerId, String buyerId, String quantity,String transactionId) {
         ContactNo = contactNo;
         OrderedImageUrl = orderedImageUrl;
         OrderProductType = orderProductType;
@@ -52,6 +53,7 @@ public class ModelOrder {
         PhotoOwnerId = photoOwnerId;
         BuyerId = buyerId;
         Quantity = quantity;
+        TransactionId = transactionId;
     }
 
 
@@ -135,5 +137,11 @@ public class ModelOrder {
         Quantity = quantity;
     }
 
+    public String getTransactionId() {
+        return TransactionId;
+    }
 
+    public void setTransactionId(String transactionId) {
+        TransactionId = transactionId;
+    }
 }

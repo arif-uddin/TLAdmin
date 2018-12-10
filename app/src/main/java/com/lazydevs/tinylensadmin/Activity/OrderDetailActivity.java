@@ -2,6 +2,7 @@ package com.lazydevs.tinylensadmin.Activity;
 
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,10 +24,11 @@ import com.lazydevs.tinylensadmin.R;
 
 public class OrderDetailActivity extends AppCompatActivity {
 
-    TextView orderStatus,orderId,orderDate,productType,productQuantity,orderDescription,buyerName,photoBy;
+    TextView orderStatus,orderId,orderDate,productType,productQuantity,orderDescription,buyerName,photoBy,tvPayment;
     ImageView orderedPhoto;
     Button btnReceive,btnReject,btnProcessing,btnDelivered;
     String OrderId;
+    private Handler mWaitHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         orderDescription=(TextView) findViewById(R.id.tv_order_description);
         buyerName=(TextView) findViewById(R.id.tv_buyer_name);
         photoBy=(TextView) findViewById(R.id.tv_photo_owner_name);
+        tvPayment=(TextView)findViewById(R.id.tv_payment);
 
         btnReject=(Button)findViewById(R.id.btn_reject);
         btnReceive=(Button)findViewById(R.id.btn_receive);
@@ -63,6 +66,18 @@ public class OrderDetailActivity extends AppCompatActivity {
         buyerName.setText("Order by: "+getIntent().getExtras().getString("buyer_name"));
         photoBy.setText("Photo by: "+getIntent().getExtras().getString("owner_name"));
 
+        String TvPayment=getIntent().getExtras().getString("payment");
+
+        if (TvPayment==null)
+        {
+            tvPayment.setVisibility(TextView.GONE);
+        }
+        else
+        {
+            tvPayment.setText("Payment Received!!\nTransaction Id: "+TvPayment);
+        }
+
+
 
         btnReject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +96,13 @@ public class OrderDetailActivity extends AppCompatActivity {
                     }
                 });
                 Toast.makeText(OrderDetailActivity.this, "Order Rejected", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-                finish();
+                mWaitHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        onBackPressed();
+                        finish();
+                    }
+                }, 1000);
             }
         });
 
@@ -104,8 +124,13 @@ public class OrderDetailActivity extends AppCompatActivity {
                 });
 
                 Toast.makeText(OrderDetailActivity.this, "Order Received", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-                finish();
+                mWaitHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        onBackPressed();
+                        finish();
+                    }
+                }, 1000);
             }
         });
 
@@ -127,8 +152,13 @@ public class OrderDetailActivity extends AppCompatActivity {
                 });
 
                 Toast.makeText(OrderDetailActivity.this, "Order is added to process", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-                finish();
+                mWaitHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        onBackPressed();
+                        finish();
+                    }
+                }, 1000);
             }
         });
 
@@ -150,8 +180,13 @@ public class OrderDetailActivity extends AppCompatActivity {
                 });
 
                 Toast.makeText(OrderDetailActivity.this, "Product is Delivered", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-                finish();
+                mWaitHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        onBackPressed();
+                        finish();
+                    }
+                }, 1000);
             }
         });
     }
