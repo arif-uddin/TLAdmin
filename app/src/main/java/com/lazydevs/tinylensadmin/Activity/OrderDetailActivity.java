@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,7 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.lazydevs.tinylensadmin.Adapter.OrderListAdapter;
+import com.lazydevs.tinylensadmin.Model.ModelEarn;
 import com.lazydevs.tinylensadmin.R;
+
+import java.text.DateFormat;
+import java.util.Date;
 
 public class OrderDetailActivity extends AppCompatActivity {
 
@@ -28,12 +34,17 @@ public class OrderDetailActivity extends AppCompatActivity {
     ImageView orderedPhoto;
     Button btnReceive,btnReject,btnProcessing,btnDelivered;
     String OrderId;
+    String ProfitBalance;
     private Handler mWaitHandler = new Handler();
+    FirebaseAuth firebaseAuth;
+    String PhotoOwner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         orderStatus=(TextView)findViewById(R.id.tv_order_status);
         orderedPhoto=(ImageView)findViewById(R.id.iv_ordered_photo);
         orderId=(TextView) findViewById(R.id.tv_orderid);
@@ -51,6 +62,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         btnDelivered=(Button)findViewById(R.id.btn_delivered);
 
         orderStatus.setText("Order Status: "+" "+getIntent().getExtras().getString("order_status"));
+        ProfitBalance=getIntent().getExtras().getString("profit");
+        PhotoOwner=getIntent().getExtras().getString("photoOwnerId");
 
         Glide
                 .with(getApplicationContext())
@@ -171,6 +184,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("orders");
                         databaseReference.child(OrderId).child("orderStatus").setValue("Delivered");
+                        databaseReference.child(OrderId).child("deliveryDate").setValue(DateFormat.getDateTimeInstance().format(new Date()));
                     }
 
                     @Override
@@ -178,6 +192,11 @@ public class OrderDetailActivity extends AppCompatActivity {
 
                     }
                 });
+
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                ModelEarn modelEarn= new ModelEarn(DateFormat.getDateTimeInstance().format(new Date()),ProfitBalance);
+                databaseReference.child("profit").child(PhotoOwner).setValue(modelEarn);
+
 
                 Toast.makeText(OrderDetailActivity.this, "Product is Delivered", Toast.LENGTH_SHORT).show();
                 mWaitHandler.postDelayed(new Runnable() {
@@ -191,7 +210,10 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 
-
+    private String getUID() {
+        FirebaseUser currentFirebaseUser = firebaseAuth.getCurrentUser();
+        return currentFirebaseUser.getUid();
+    }
     public void btn_back(View view) {
         onBackPressed();
         finish();
