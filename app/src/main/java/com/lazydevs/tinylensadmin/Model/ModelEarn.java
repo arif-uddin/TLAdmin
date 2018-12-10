@@ -4,10 +4,12 @@ public class ModelEarn {
 
     String deliveryDate;
     String profitBalance;
+    String userId;
 
-    public ModelEarn(String deliveryDate, String profitBalance) {
+    public ModelEarn(String deliveryDate, String profitBalance, String userId) {
         this.deliveryDate = deliveryDate;
         this.profitBalance = profitBalance;
+        this.userId=userId;
     }
 
     public String getDeliveryDate() {
@@ -24,5 +26,13 @@ public class ModelEarn {
 
     public void setProfitBalance(String profitBalance) {
         this.profitBalance = profitBalance;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

@@ -194,8 +194,8 @@ public class OrderDetailActivity extends AppCompatActivity {
                 });
 
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                ModelEarn modelEarn= new ModelEarn(DateFormat.getDateTimeInstance().format(new Date()),ProfitBalance);
-                databaseReference.child("profit").child(PhotoOwner).setValue(modelEarn);
+                ModelEarn modelEarn= new ModelEarn(DateFormat.getDateTimeInstance().format(new Date()),ProfitBalance,PhotoOwner);
+                databaseReference.child("profits").push().setValue(modelEarn);
 
 
                 Toast.makeText(OrderDetailActivity.this, "Product is Delivered", Toast.LENGTH_SHORT).show();
@@ -210,10 +210,6 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 
-    private String getUID() {
-        FirebaseUser currentFirebaseUser = firebaseAuth.getCurrentUser();
-        return currentFirebaseUser.getUid();
-    }
     public void btn_back(View view) {
         onBackPressed();
         finish();
