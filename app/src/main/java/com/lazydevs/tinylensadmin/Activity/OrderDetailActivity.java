@@ -38,6 +38,9 @@ public class OrderDetailActivity extends AppCompatActivity {
     private Handler mWaitHandler = new Handler();
     FirebaseAuth firebaseAuth;
     String PhotoOwner;
+    String OrderStatus;
+    String TvPayment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_detail);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
         orderStatus=(TextView)findViewById(R.id.tv_order_status);
         orderedPhoto=(ImageView)findViewById(R.id.iv_ordered_photo);
         orderId=(TextView) findViewById(R.id.tv_orderid);
@@ -61,7 +65,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         btnProcessing=(Button)findViewById(R.id.btn_processing);
         btnDelivered=(Button)findViewById(R.id.btn_delivered);
 
-        orderStatus.setText("Order Status: "+" "+getIntent().getExtras().getString("order_status"));
+        OrderStatus=getIntent().getExtras().getString("order_status");
+        orderStatus.setText(OrderStatus);
         ProfitBalance=getIntent().getExtras().getString("profit");
         PhotoOwner=getIntent().getExtras().getString("photoOwnerId");
 
@@ -79,18 +84,9 @@ public class OrderDetailActivity extends AppCompatActivity {
         buyerName.setText("Order by: "+getIntent().getExtras().getString("buyer_name"));
         photoBy.setText("Photo by: "+getIntent().getExtras().getString("owner_name"));
 
-        String TvPayment=getIntent().getExtras().getString("payment");
+        TvPayment=getIntent().getExtras().getString("payment");
 
-        if (TvPayment==null)
-        {
-            tvPayment.setVisibility(TextView.GONE);
-        }
-        else
-        {
-            tvPayment.setText("Payment Received!!\nTransaction Id: "+TvPayment);
-        }
-
-
+        btnStatusCheck();
 
         btnReject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,9 +206,62 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 
-    public void btn_back(View view) {
+
+    public void btn_back_main(View view) {
         onBackPressed();
         finish();
+    }
 
+    public void btnStatusCheck()
+    {
+        if (TvPayment==null)
+        {
+            tvPayment.setVisibility(TextView.GONE);
+        }
+        else
+        {
+            tvPayment.setText("Payment Received!!\nTransaction Id: "+TvPayment);
+        }
+
+        if (OrderStatus.equals("Not Received"))
+        {
+            btnProcessing.setVisibility(Button.GONE);
+            btnDelivered.setVisibility(Button.GONE);
+            btnReject.setVisibility(Button.VISIBLE);
+            btnReceive.setVisibility(Button.VISIBLE);
+        }
+
+        if (OrderStatus.equals("Received"))
+        {
+            btnReject.setVisibility(Button.GONE);
+            btnReceive.setVisibility(Button.GONE);
+            btnDelivered.setVisibility(Button.GONE);
+            btnProcessing.setVisibility(Button.VISIBLE);
+
+
+        }
+        if (OrderStatus.equals("Under Process"))
+        {
+            btnReject.setVisibility(Button.GONE);
+            btnProcessing.setVisibility(Button.GONE);
+            btnReceive.setVisibility(Button.GONE);
+            btnDelivered.setVisibility(Button.VISIBLE);
+        }
+
+        if (OrderStatus.equals("Delivered"))
+        {
+            btnReject.setVisibility(Button.GONE);
+            btnProcessing.setVisibility(Button.GONE);
+            btnReceive.setVisibility(Button.GONE);
+            btnDelivered.setVisibility(Button.GONE);
+        }
+
+        if (OrderStatus.equals("Rejected"))
+        {
+            btnReject.setVisibility(Button.GONE);
+            btnProcessing.setVisibility(Button.GONE);
+            btnReceive.setVisibility(Button.VISIBLE);
+            btnDelivered.setVisibility(Button.GONE);
+        }
     }
 }

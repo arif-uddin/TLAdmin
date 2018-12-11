@@ -27,69 +27,62 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <TextView
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Product Type"/>
-                <TextView
-                    android:textColor="#000"
-                    android:id="@+id/tv_product_type_order_list"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" T-shirt"/>
+                <android.support.v7.widget.CardView
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Quantity"/>
-                <TextView
-                    android:textColor="#000"
-                    android:id="@+id/tv_product_quantity_order_list"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20"/>
+                    <ImageView
+                        android:id="@+id/iv_report_image"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginLeft="7dp"
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
                 <TextView
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Order Date"/>
-                <TextView
-                    android:textColor="#000"
-                    android:id="@+id/tv_order_date_order_list"
-                    android:textSize="18sp"
                     android:textStyle="bold"
+                    android:textColor="#000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="24 Nov 2018 1:38:13 am"/>
+                    android:text="Reported by"/>
 
                 <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/tv_reported_by"
+                    android:textColor="#01a311"
+                    android:textSize="17sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arif Uddin"/>
+
+                <TextView
+                    android:textStyle="bold"
                     android:textColor="#000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order Status"/>
+                    android:text="Report for"/>
+
                 <TextView
-                    android:textColor="#e70400"
-                    android:id="@+id/tv_order_status_order_list"
-                    android:textSize="18sp"
                     android:textStyle="bold"
+                    android:textColor="#ea0000"
+                    android:id="@+id/tv_report_for"
+                    android:textSize="17sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Not Received"/>
+                    android:text="Kabbo"/>
+
+
 
             </LinearLayout>
 

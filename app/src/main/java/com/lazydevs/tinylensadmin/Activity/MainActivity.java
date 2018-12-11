@@ -1,5 +1,6 @@
 package com.lazydevs.tinylensadmin.Activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -64,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
         orders.clear();
         Query query = FirebaseDatabase.getInstance().getReference().child("orders");
         query.orderByKey().addChildEventListener(new QueryForOrders());
+    }
+
+    public void btn_order_list(View view) {
+
+    }
+
+    public void btn_report_order_list(View view) {
+        Intent intent=new Intent(MainActivity.this,ReportActivity.class);
+        startActivity(intent);
+        this.overridePendingTransition(0, 0);
     }
 
     private class QueryForOrders implements ChildEventListener {

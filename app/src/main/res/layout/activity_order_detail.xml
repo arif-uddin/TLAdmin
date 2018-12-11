@@ -4,163 +4,220 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e6e6e6"
+    android:background="#ececec"
+    android:orientation="vertical"
     tools:context=".Activity.OrderDetailActivity">
-    <ScrollView
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@drawable/ic_top_bar_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight=".77">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:gravity="left|center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <ImageButton
-                android:onClick="btn_back"
-                android:scaleType="fitCenter"
-                android:layout_marginTop="10dp"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:background="@color/colorAccent"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
-
-            <TextView
-                android:id="@+id/tv_order_status"
-                android:gravity="center"
-                android:text="Order Status"
-                android:textColor="#000"
-                android:textSize="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Ordered Photo"
-                android:textColor="#000"
-                android:textSize="15sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/iv_ordered_photo"
+                android:onClick="btn_back_main"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back_button_icon"
+                android:background="@color/colorAccent"
+                android:scaleType="fitCenter"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
             <TextView
                 android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_payment"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#c70000"
-                android:text="Payment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_orderid"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:text="Order ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_order_date"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:text="Order Date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_photo_owner_name"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:text="Photo by"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:id="@+id/tv_order_status"
+                android:textColor="#fcf417"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Detail"
+                android:textSize="18sp"/>
 
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_buyer_name"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:text="Ordered by"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_product_type"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:text="Product Type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_product_quantity"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:text="Quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_order_description"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:textColor="#000"
-                android:text="Order Description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/btn_reject"
-                    android:textSize="12sp"
-                    android:text="Reject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:id="@+id/btn_receive"
-                    android:textSize="12sp"
-                    android:text="Receive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:id="@+id/btn_processing"
-                    android:textSize="12sp"
-                    android:text="Processing"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:id="@+id/btn_delivered"
-                    android:textSize="12sp"
-                    android:text="Delivered"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Ordered Photo"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_ordered_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Payment"
+                    android:textColor="#00ba00"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_orderid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Order ID"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Order Date"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_photo_owner_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Photo by"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_buyer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Ordered by"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_product_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Product Type"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_product_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Quantity"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Order Description"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_reject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reject"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_receive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Receive"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_processing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Processing"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_delivered"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delivered"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
 
 
 </LinearLayout>

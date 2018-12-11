@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.ReportActivity">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -33,7 +33,7 @@
                 android:textColor="#ecf0f1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order List"
+                android:text="Report List"
                 android:textSize="18sp"/>
 
         </LinearLayout>
@@ -59,7 +59,7 @@
         >
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_order_list"
+            android:id="@+id/rv_report_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -86,19 +86,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="#3498db"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
             <ImageButton
+                android:onClick="btn_orderlist_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
                 android:padding="12dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_checklist_square_interface_symbol_of_rounded_corners"
-                android:onClick="btn_order_list"/>
+                android:src="@drawable/ic_checklist_square_interface_symbol_of_rounded_corners" />
 
         </LinearLayout>
 
@@ -112,12 +111,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:background="#3498db"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
             <ImageButton
-                android:onClick="btn_report_order_list"
                 android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:background="@color/colorAccent"
@@ -140,6 +139,5 @@
 
 
     </LinearLayout>
-
 
 </LinearLayout>
